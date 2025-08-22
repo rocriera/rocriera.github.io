@@ -1,1 +1,1 @@
-© 2025 Tu Nombre. Todos los derechos reservados.
+© 2025 Roc Riera Malgosa. Todos los derechos reservados.
