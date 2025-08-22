@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="ca">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,37 +13,43 @@
     </div>
   </header>
 
-  <main class="container">
-    <section id="precios" class="stack gap-l reveal">
+  <main>
+    <section id="precios" class="container stack gap-l reveal">
       <div class="price-list">
         <div class="price-item">
           <div class="price pop">7€</div>
           <div class="price-info">
-            <div class="top">Corte sencillo</div>
+            <div class="top">Tall + beguda</div>
           </div>
         </div>
-        </div>
-      <div class="payment-info">paga con <strong>bizum</strong> o <strong>efectivo</strong></div>
-      <div class="arrow-label animated-arrow">reservas por aquí ↓</div>
+      </div>
+      <div class="payment-info">paga amb <strong>bizum</strong> o <strong>efectiu</strong></div>
+      <div class="arrow-label animated-arrow">reserves per aquí ↓</div>
     </section>
 
     <section id="reserva" class="stack gap-m reveal">
       <div class="calendar-card" id="calendarCard">
-        <iframe title="Reserva con Google" src="https://rocriera.setmore.com"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe 
+          title="Reserva amb setmore" 
+          src="https://rocriera.setmore.com" 
+          loading="lazy"
+          allow="web-share">
+        </iframe>
       </div>
     </section>
 
-    <p class="alt-link">Si no carga el calendario, <a id="openCalendar" href="#">abre la agenda en una pestaña nueva</a>.</p>
+    <div class="container">
+      <p class="alt-link">si no carrega el calendari, <a id="openCalendar" href="#">obre l'agenda en una pestanya nova</a>.</p>
+    </div>
 
-    <section id="contacto" class="stack gap-s reveal">
+    <section id="contacto" class="container stack gap-s reveal">
       <p class="phone center">📞 <a href="tel:+34608993681">+34 608 99 36 81</a></p>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> Roc Riera Malgosa </small>
+      <small>© <span id="year"></span> Roc Riera Malgosa</small>
     </div>
   </footer>
 

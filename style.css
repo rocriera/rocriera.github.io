@@ -1,134 +1,181 @@
-:root{
+/* Variables CSS per a una gestió de colors més fàcil */
+:root {
   --bg: #fff8f0;
   --ink: #2b211c;
   --muted: #6b5a50;
   --brand: #ff6a00;
   --brand-ink: #b34700;
 }
-*{box-sizing:border-box}
-body{margin:0; font-family: system-ui, sans-serif; background:var(--bg); color:var(--ink)}
-.container{width:min(600px,92%); margin-inline:auto}
-.stack{display:flex; flex-direction:column}
-.gap-l{gap:1.5rem}
-.gap-m{gap:1rem}
-.gap-s{gap:.5rem}
-.site-header{
-  text-align:center;
-  border-bottom:1px solid #eadccd;
-  background:#fff6eecc;
-  padding:14px 0
-}
-.site-header h1{
-  font-size:clamp(22px,6vw,32px);
-  color:var(--brand-ink);
-  margin:0
-}
-.h2{text-align:center; font-size:clamp(20px,5vw,26px); margin:0}
 
-/* Estilos de la lista de precios, ahora más minimalista */
+/* Configuració global i reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.container {
+  width: min(600px, 92%);
+  margin-inline: auto;
+}
+
+/* Utilitats de disseny (flexbox, espais) */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-l { gap: 1.5rem; }
+.gap-m { gap: 1rem; }
+.gap-s { gap: .5rem; }
+
+/* Estils de la capçalera */
+.site-header {
+  text-align: center;
+  border-bottom: 1px solid #eadccd;
+  background: #fff6eecc;
+  padding: 14px 0;
+}
+
+.site-header h1 {
+  font-size: clamp(22px, 6vw, 32px);
+  color: var(--brand-ink);
+  margin: 0;
+}
+
+/* Estils de la secció de preus */
 .price-list {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 2rem;
-  /* Usamos un borde inferior para cada item, no una caja */
   border-bottom: 2px solid var(--brand);
 }
 
-/* Estilos de cada bloque de precio individual */
 .price-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-block: 2rem; /* Espacio vertical para separar los items */
-  border-top: 2px solid var(--brand); /* Una línea que separa los servicios */
-  width: 100%; /* Ocupa todo el ancho disponible */
+  padding-block: 2rem;
+  border-top: 2px solid var(--brand);
+  width: 100%;
 }
 
-/* En el futuro, podrías tener varios price-items, así se verían: */
-.price-item:not(:first-child) {
-  margin-top: -2px; /* Para que los bordes se "peguen" */
+.price {
+  font-size: clamp(80px, 14vw, 120px);
+  font-weight: 900;
+  color: var(--brand);
+  line-height: 1;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.08);
 }
 
-.price{
-  font-size:clamp(80px, 14vw, 120px);
-  font-weight:900;
-  color:var(--brand);
-  line-height:1;
-  text-shadow: 3px 3px 0px rgba(0,0,0,0.08);
-}
-
-.price-info{
-  display:flex;
-  flex-direction:column;
+.price-info {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
 }
 
-.price-info .top{
-  font-size:1.6rem;
-  font-weight:700;
+.price-info .top {
+  font-size: 1.6rem;
+  font-weight: 700;
   text-align: center;
 }
 
+/* Informació de pagament i fletxa */
 .payment-info {
-    text-align: center;
-    font-size: 1rem;
-    color: var(--muted);
-    margin-top: 1rem;
-    font-weight: 500;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  font-weight: 500;
 }
 
 .payment-info strong {
-    color: var(--ink);
-    font-weight: 700;
+  color: var(--ink);
+  font-weight: 700;
 }
 
-.arrow-label{
-  margin-top:10px;
-  font-size:1.1rem;
-  color:var(--brand-ink);
-  text-align:center
-}
-
-/* Mantenemos la animación de la flecha */
-.animated-arrow {
-    animation: bounce 1.2s infinite;
+.arrow-label {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: var(--brand-ink);
+  text-align: center;
+  animation: bounce 1.2s infinite;
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-8px);
-  }
-  60% {
-    transform: translateY(-4px);
-  }
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
 }
 
-.h2.twist{display:inline-block; transform: rotate(-2deg)}
-.calendar-card{padding:8px; margin-top:1rem}
-.calendar-card iframe{width:100%; min-height:400px; border:0; border-radius:10px}
-.alt-link{color:var(--muted); font-size:.95rem; text-align:center; display:block}
-.alt-link a{color:var(--brand-ink)}
-.phone.center{text-align:center; font-size:1.1rem; margin-top:20px}
-.phone a{color:inherit; text-decoration:none; border-bottom:2px solid var(--brand); padding-bottom:2px}
-.phone a:hover{opacity:.85}
-.site-footer{text-align:center; border-top:1px solid #eadccd; padding:16px 0; color:var(--muted); margin-top:40px}
+/* Estils de la secció de reserves per a ordinador (per defecte) */
+.calendar-card {
+  padding: 0;
+  margin-top: 1rem;
+  width: 100%;
+}
 
-@media (max-width: 480px){
-  .price-list {
-    flex-direction: column;
-  }
-  .price{
-    font-size:clamp(64px, 20vw, 110px)
-  }
-  .price-info{
-    height:auto
-  }
-  .calendar-card iframe{min-height:320px}
+.calendar-card iframe {
+  width: 100%;
+  min-height: 900px;
+  border: 0;
+  border-radius: 0;
+  display: block;
+}
+
+/* Estils per a la usabilitat */
+.alt-link {
+  color: var(--muted);
+  font-size: .95rem;
+  text-align: center;
+  display: block;
+  margin-top: 1rem;
+}
+
+.alt-link a {
+  color: var(--brand-ink);
+}
+
+.phone.center {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+.phone a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid var(--brand);
+  padding-bottom: 2px;
+}
+
+.phone a:hover {
+  opacity: .85;
+}
+
+/* Estils del peu de pàgina */
+.site-footer {
+  text-align: center;
+  border-top: 1px solid #eadccd;
+  padding: 16px 0;
+  color: var(--muted);
+  margin-top: 40px;
+}
+
+/* Media Queries per a adaptació a mòbils */
+@media (max-width: 768px) {
+    /* Oculta la barra de scroll de l'iframe per a mòbils i gestiona-la amb JS */
+    .calendar-card iframe {
+        min-height: 500px;
+        overflow: hidden;
+    }
 }
