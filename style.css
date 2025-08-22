@@ -117,7 +117,7 @@ body {
   60% { transform: translateY(-4px); }
 }
 
-/* Estils de la secció de reserves per a ordinador (per defecte) */
+/* Estils de la secció de reserves */
 .calendar-card {
   padding: 0;
   margin-top: 1rem;
@@ -126,7 +126,7 @@ body {
 
 .calendar-card iframe {
   width: 100%;
-  min-height: 900px;
+  min-height: 500px;
   border: 0;
   border-radius: 0;
   display: block;
@@ -171,11 +171,9 @@ body {
   margin-top: 40px;
 }
 
-/* Media Queries per a adaptació a mòbils */
-@media (max-width: 768px) {
-    /* Oculta la barra de scroll de l'iframe per a mòbils i gestiona-la amb JS */
-    .calendar-card iframe {
-        min-height: 500px;
-        overflow: hidden;
-    }
+/* Media Queries per a ordinadors */
+@media (min-width: 769px) {
+  .calendar-card iframe {
+    min-height: 900px;
+  }
 }

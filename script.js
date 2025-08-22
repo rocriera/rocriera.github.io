@@ -26,43 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
       window.open(iframeSrc, '_blank');
     }
   });
-
-  // --- Lògica de control de scroll per a mòbils ---
-  const iframe = document.querySelector('#reserva iframe');
-  const body = document.body;
-
-  function isMobile() {
-    // Detecta si l'ample de la finestra és inferior a 768px (ample típic de tauleta/mòbil)
-    return window.innerWidth <= 768;
-  }
-
-  if (iframe && isMobile()) {
-    iframe.addEventListener('load', () => {
-      const iframeDoc = iframe.contentWindow.document;
-      iframeDoc.body.style.overflow = 'hidden'; // Amaga l'scroll intern de l'iframe per defecte
-    });
-
-    // Detecta l'scroll dins de l'iframe
-    iframe.contentWindow.addEventListener('scroll', () => {
-      const iframeScrollTop = iframe.contentWindow.pageYOffset || iframe.contentWindow.document.documentElement.scrollTop;
-      const iframeScrollHeight = iframe.contentWindow.document.documentElement.scrollHeight;
-      const iframeHeight = iframe.contentWindow.innerHeight;
-
-      const isAtBottom = iframeScrollTop + iframeHeight >= iframeScrollHeight;
-
-      if (isAtBottom) {
-        body.style.overflowY = 'auto'; // Reactiva l'scroll del cos de la pàgina
-      } else {
-        body.style.overflowY = 'hidden'; // Bloca l'scroll del cos de la pàgina
-      }
-    });
-
-    // Detecta quan l'iframe entra a la vista i bloca el scroll de la pàgina principal
-    window.addEventListener('scroll', () => {
-      const rect = iframe.getBoundingClientRect();
-      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-        body.style.overflowY = 'hidden';
-      }
-    });
-  }
 });
