@@ -64,7 +64,6 @@ body {
   align-items: center;
   text-align: center;
   padding-block: 2rem;
-  border-top: 2px solid var(--border);
   width: 100%;
 }
 
@@ -122,15 +121,13 @@ body {
   padding: 0;
   margin-top: 1rem;
   width: 100vw;
+  /* Use a minimum height instead of a fixed height */
+  min-height: 900px; 
 }
 
-.calendar-card iframe {
-  width: 100%;
-  min-height: 1000px;
-  border: 0;
-  border-radius: 0;
-  display: block;
-}
+  .calendar-card iframe {
+    min-height: 900px;
+  }
 
 /* Estils per a la usabilitat */
 .alt-link {
@@ -170,11 +167,4 @@ body {
   color: var(--muted);
   margin-top: 40px;
   background: var(--bg);
-}
-
-/* Media Queries per a ordinadors */
-@media (min-width: 769px) {
-  .calendar-card iframe {
-    min-height: 900px;
-  }
 }
