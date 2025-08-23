@@ -1,13 +1,21 @@
-/* Variables CSS per a una gestió de colors més fàcil */
+/* ========= VARIABLES DE COLOR ========= */
 :root {
   --bg: #F5F5F5;
   --ink: #222222;
   --muted: #AAAAAA;
-  --brand: #0077B6;
+  --brand: #3FA9F5; /* azul más claro */
   --border: #DDDDDD;
+  --carroussel_img_spacing: 0px;
+
+  /* Nuevos para legibilidad en carrusel */
+  --text-light: #ffffff;
+  --text-dark: #111111;
+  --overlay-dark: rgba(0,0,0,0.55);
+  --shadow-soft: 0 2px 10px rgba(0,0,0,0.6);
+  --shadow-strong: 0 4px 20px rgba(0,0,0,0.8);
 }
 
-/* Configuració global i reset */
+/* ========= RESET GLOBAL ========= */
 * {
   box-sizing: border-box;
 }
@@ -20,21 +28,17 @@ body {
 }
 
 .container {
-  width: min(600px, 92%);
+  width: 100vw;
   margin-inline: auto;
 }
 
-/* Utilitats de disseny (flexbox, espais) */
-.stack {
-  display: flex;
-  flex-direction: column;
-}
-
+/* ========= UTILIDADES ========= */
+.stack { display: flex; flex-direction: column; }
 .gap-l { gap: 1.5rem; }
 .gap-m { gap: 1rem; }
 .gap-s { gap: .5rem; }
 
-/* Estils de la capçalera */
+/* ========= CABECERA ========= */
 .site-header {
   text-align: center;
   border-bottom: 1px solid var(--border);
@@ -48,14 +52,63 @@ body {
   margin: 0;
 }
 
-/* Estils de la secció de preus */
+/* ========= SECCIÓN DE PRECIOS ========= */
+#precios {
+  position: relative;
+  overflow: hidden;
+  color: var(--text-light);
+}
+
+#precios .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Overlay detrás del texto para asegurar contraste */
+#precios .container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--overlay-dark) 0%,
+    rgba(0,0,0,0.35) 40%,
+    var(--overlay-dark) 100%
+  );
+  z-index: -1;
+}
+
+/* Carrusel de fondo */
+.carousel-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: transform 1.2s ease-in-out;
+}
+
+.carousel-track img {
+  height: 100%;
+  width: auto;
+  flex-shrink: 0;
+  margin: 0 var(--carroussel_img_spacing);
+  filter: brightness(0.6);
+}
+
+/* ========= CONTENIDO DE PRECIOS ========= */
 .price-list {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 2rem;
-  border-bottom: 2px solid var(--border);
 }
 
 .price-item {
@@ -70,9 +123,9 @@ body {
 .price {
   font-size: clamp(80px, 14vw, 120px);
   font-weight: 900;
-  color: var(--brand); /* Aplica el color de marca al preu */
+  color: var(--brand);
   line-height: 1;
-  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.08);
+  text-shadow: var(--shadow-strong);
 }
 
 .price-info {
@@ -86,28 +139,34 @@ body {
   font-size: 1.6rem;
   font-weight: 700;
   text-align: center;
+  color: var(--text-light);
+  text-shadow: var(--shadow-soft);
 }
 
-/* Informació de pagament i fletxa */
+/* Información de pago */
 .payment-info {
   text-align: center;
   font-size: 1rem;
-  color: var(--muted);
+  color: var(--text-light);
   margin-top: 1rem;
   font-weight: 500;
+  text-shadow: var(--shadow-soft);
 }
 
 .payment-info strong {
-  color: var(--ink);
+  color: var(--brand); /* azul más claro para negrita */
   font-weight: 700;
 }
 
+/* Flecha animada */
 .arrow-label {
   margin-top: 10px;
+  margin-bottom: 20px;
   font-size: 1.1rem;
-  color: var(--brand); /* Aplica el color de marca a la fletxa */
+  color: var(--brand);
   text-align: center;
   animation: bounce 1.2s infinite;
+  text-shadow: var(--shadow-soft);
 }
 
 @keyframes bounce {
@@ -116,20 +175,19 @@ body {
   60% { transform: translateY(-4px); }
 }
 
-/* Estils de la secció de reserves */
+/* ========= RESERVAS ========= */
 .calendar-card {
   padding: 0;
   margin-top: 1rem;
   width: 100vw;
-  /* Use a minimum height instead of a fixed height */
-  min-height: 900px; 
+  min-height: 900px;
 }
 
-  .calendar-card iframe {
-    min-height: 900px;
-  }
+.calendar-card iframe {
+  min-height: 900px;
+}
 
-/* Estils per a la usabilitat */
+/* ========= ENLACES ALTERNATIVOS ========= */
 .alt-link {
   color: var(--muted);
   font-size: .95rem;
@@ -139,9 +197,10 @@ body {
 }
 
 .alt-link a {
-  color: var(--brand); /* Aplica el color de marca als enllaços */
+  color: var(--brand);
 }
 
+/* ========= CONTACTO ========= */
 .phone.center {
   text-align: center;
   font-size: 1.1rem;
@@ -151,15 +210,13 @@ body {
 .phone a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 2px solid var(--brand); /* Borda del color de marca */
+  border-bottom: 2px solid var(--brand);
   padding-bottom: 2px;
 }
 
-.phone a:hover {
-  opacity: .85;
-}
+.phone a:hover { opacity: .85; }
 
-/* Estils del peu de pàgina */
+/* ========= FOOTER ========= */
 .site-footer {
   text-align: center;
   border-top: 1px solid var(--border);
