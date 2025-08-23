@@ -105,7 +105,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
 }
 
 .price-item {
