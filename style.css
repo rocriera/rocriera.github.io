@@ -1,21 +1,24 @@
-/* ========= VARIABLES DE COLOR ========= */
+/* ========= COLOR VARIABLES ========= */
 :root {
-  --bg: #F5F5F5;
-  --ink: #222222;
-  --muted: #AAAAAA;
-  --brand: #3FA9F5; /* azul más claro */
-  --border: #DDDDDD;
-  --carroussel_img_spacing: 0px;
+  --color-background: #F5F5F5;
+  --color-text: #222222;
+  --color-muted-text: #AAAAAA;
+  --color-border: #DDDDDD;
+  --color-brand-accent: #3FA9F5;
 
-  /* Nuevos para legibilidad en carrusel */
-  --text-light: #ffffff;
-  --text-dark: #111111;
-  --overlay-dark: rgba(0,0,0,0.25);
-  --shadow-soft: 0 2px 10px rgba(0,0,0,0.6);
-  --shadow-strong: 0 4px 20px rgba(0,0,0,0.8);
+  --color-dark-overlay: rgba(0, 0, 0, 0.25);
+  --color-light-text: #ffffff;
+  
+  --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.6);
+  --shadow-strong: 0 4px 20px rgba(0, 0, 0, 0.8);
+  --carousel-spacing: 0px;
+
+  --header-height: 65px;
+  --price-list-bottom-dist: 220px;
+  --price-list-min-height: 220px;
 }
 
-/* ========= RESET GLOBAL ========= */
+/* ========= GLOBAL RESET ========= */
 * {
   box-sizing: border-box;
 }
@@ -23,8 +26,8 @@
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 .container {
@@ -32,49 +35,50 @@ body {
   margin-inline: auto;
 }
 
-/* ========= UTILIDADES ========= */
+/* ========= UTILITIES ========= */
 .stack { display: flex; flex-direction: column; }
 .gap-l { gap: 1.5rem; }
 .gap-m { gap: 1rem; }
 .gap-s { gap: .5rem; }
 
-/* ========= CABECERA ========= */
+/* ========= HEADER ========= */
 .site-header {
   text-align: center;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-background);
+  height: var(--header-height);
 }
 
 .site-header h1 {
   font-size: clamp(22px, 6vw, 32px);
-  color: var(--ink);
+  color: var(--color-text);
   margin: 0;
+  padding: 14px 0;
 }
 
-/* ========= SECCIÓN DE PRECIOS ========= */
-#precios {
+/* ========= PRICES SECTION ========= */
+#prices {
   position: relative;
   overflow: hidden;
-  color: var(--text-light);
+  color: var(--color-light-text);
 }
 
-#precios .container {
+#prices .container {
   position: relative;
   z-index: 2;
   text-align: center;
 }
 
-/* Overlay detrás del texto para asegurar contraste */
-#precios .container::before {
+/* Overlay behind text to ensure contrast */
+#prices .container::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--overlay-dark);
+  background: var(--color-dark-overlay);
   z-index: -1;
 }
 
-/* Carrusel de fondo */
+/* Background carousel */
 .carousel-bg {
   position: absolute;
   inset: 0;
@@ -92,20 +96,20 @@ body {
 .carousel-track img {
   height: 100%;
   width: auto;
-  object-fit: cover;   /* rellena sin deformar */
+  object-fit: cover;
   flex-shrink: 0;
-  margin: 0 var(--carroussel_img_spacing);
+  margin: 0 var(--carousel-spacing);
   filter: brightness(0.6);
 }
 
-
-/* ========= CONTENIDO DE PRECIOS ========= */
+/* ========= PRICES CONTENT ========= */
 .price-list {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  height: calc(-100px + 80vh);
+  height: calc(100vh - var(--header-height) - var(--price-list-bottom-dist));
+  min-height: var(--price-list-min-height);
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -120,9 +124,9 @@ body {
 }
 
 .price {
-  font-size: clamp(80px, 14vw, 120px);
+  font-size: clamp(75px, 15vh, 125px);
   font-weight: 900;
-  color: var(--brand);
+  color: var(--color-brand-accent);
   margin-bottom: 1px;
   line-height: 1;
   text-shadow: var(--shadow-strong);
@@ -136,34 +140,34 @@ body {
 }
 
 .price-info .top {
-  font-size: 1.6rem;
+  font-size: clamp(20px, 4vh, 30px);
   font-weight: 700;
   text-align: center;
-  color: var(--text-light);
+  color: var(--color-light-text);
   text-shadow: var(--shadow-soft);
 }
 
-/* Información de pago */
+/* Payment information */
 .payment-info {
   text-align: center;
   font-size: 1rem;
-  color: var(--text-light);
+  color: var(--color-light-text);
   margin-top: 1rem;
   font-weight: 500;
   text-shadow: var(--shadow-soft);
 }
 
 .payment-info strong {
-  color: var(--brand); /* azul más claro para negrita */
+  color: var(--color-brand-accent);
   font-weight: 700;
 }
 
-/* Flecha animada */
+/* Animated arrow */
 .arrow-label {
   margin-top: 10px;
   margin-bottom: 20px;
   font-size: 1.1rem;
-  color: var(--brand);
+  color: var(--color-brand-accent);
   text-align: center;
   animation: bounce 1.2s infinite;
   text-shadow: var(--shadow-soft);
@@ -175,7 +179,14 @@ body {
   60% { transform: translateY(-4px); }
 }
 
-/* ========= RESERVAS ========= */
+/* ========= BOOKING ========= */
+#booking {
+  padding: 0;
+  margin-top: 1rem;
+  width: 100vw;
+  min-height: 900px;
+}
+
 .calendar-card {
   padding: 0;
   margin-top: 1rem;
@@ -187,9 +198,9 @@ body {
   min-height: 900px;
 }
 
-/* ========= ENLACES ALTERNATIVOS ========= */
+/* ========= ALTERNATIVE LINKS ========= */
 .alt-link {
-  color: var(--muted);
+  color: var(--color-muted-text);
   font-size: .95rem;
   text-align: center;
   display: block;
@@ -197,10 +208,10 @@ body {
 }
 
 .alt-link a {
-  color: var(--brand);
+  color: var(--color-brand-accent);
 }
 
-/* ========= CONTACTO ========= */
+/* ========= CONTACT ========= */
 .phone.center {
   text-align: center;
   font-size: 1.1rem;
@@ -210,7 +221,7 @@ body {
 .phone a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 2px solid var(--brand);
+  border-bottom: 2px solid var(--color-brand-accent);
   padding-bottom: 2px;
 }
 
@@ -219,9 +230,9 @@ body {
 /* ========= FOOTER ========= */
 .site-footer {
   text-align: center;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   padding: 16px 0;
-  color: var(--muted);
+  color: var(--color-muted-text);
   margin-top: 40px;
-  background: var(--bg);
+  background: var(--color-background);
 }
