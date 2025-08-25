@@ -52,7 +52,7 @@ body {
 }
 
 .site-header h1 {
-  font-size: clamp(22px, 6vw, 32px);
+  font-size: 32px;
   color: var(--color-text);
   margin: 0;
   padding: 0;
