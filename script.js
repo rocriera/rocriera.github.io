@@ -83,10 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let leftIndex = currentImageIndex - 1;
         while (track.scrollWidth < targetWidth) {
-            const newImage = createImage(imagePool[(leftIndex % imagePool.length + imagePool.length) % imagePool.length]);
-            track.prepend(newImage);
+            const newImage2 = createImage(imagePool[(leftIndex % imagePool.length + imagePool.length) % imagePool.length]);
+            track.prepend(newImage2);
             leftIndex--;
         }
+
+        /* Add 1 more for mobile devices bug */
+        const newImage2 = createImage(imagePool[(leftIndex % imagePool.length + imagePool.length) % imagePool.length]);
+        track.prepend(newImage2);
+
     }
     
     function centerTrack() {
@@ -129,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function startCarousel() {
         fillTrack();
         centerTrack();
-        carouselInterval = setInterval(nextImage, 5000);
+        carouselInterval = setInterval(nextImage, 4000);
     }
     
     function stopCarousel() {
