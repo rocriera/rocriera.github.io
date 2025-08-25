@@ -46,13 +46,6 @@ body {
   border-bottom: 1px solid var(--color-border);
   background: var(--color-background);
   height: var(--header-height);
-  /* The Flexbox properties here were not working because of the inner div */
-}
-
-.site-header .container {
-  /* Use Flexbox on the container to center the h1 */
-  height: 100%; /* Important: Make the container fill the header's height */
-  width: 100%;
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center;     /* Centers vertically */
@@ -63,7 +56,6 @@ body {
   color: var(--color-text);
   margin: 0;
   padding: 0;
-  text-align: center; /* Add this line */
 }
 
 /* ========= PRICES SECTION ========= */
