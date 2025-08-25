@@ -46,18 +46,22 @@ body {
   border-bottom: 1px solid var(--color-border);
   background: var(--color-background);
   height: var(--header-height);
+  /* The Flexbox properties here were not working because of the inner div */
+}
 
-  /* New: Flexbox properties for centering */
+.site-header .container {
+  /* Use Flexbox on the container to center the h1 */
+  height: 100%; /* Important: Make the container fill the header's height */
+  width: 100%;
   display: flex;
   justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
+  align-items: center;     /* Centers vertically */
 }
 
 .site-header h1 {
   font-size: clamp(22px, 6vw, 32px);
   color: var(--color-text);
   margin: 0;
-  /* Remove the padding since Flexbox handles the vertical centering */
   padding: 0;
 }
 
