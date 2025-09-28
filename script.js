@@ -24,10 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Your image pool
     const imagePool = [
-        "images/IMG-20250823-WA0005.jpg",
-        "images/IMG-20250823-WA0006.jpg",
-        "images/IMG-20250823-WA0005 copy.jpg",
-        "images/IMG-20250823-WA0006 copy.jpg"
+        "images/1.jpeg",
+        "images/2.jpg",
+        "images/3.jpg"
     ];
     
     let currentImageIndex = 0;

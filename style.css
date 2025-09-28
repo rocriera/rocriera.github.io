@@ -238,3 +238,22 @@ body {
   margin-top: 40px;
   background: var(--color-background);
 }
+/* ========= FRANJA DE CONTACTE ========= */
+.franja-contacte {
+  background-color: var(--color-brand-accent); /* blau */
+  color: var(--color-light-text); /* text negre */
+  text-align: center;
+  padding: 3px;
+  width: 100vw;
+  font-size: 1rem;
+}
+
+.franja-contacte a {
+  color: var(--color-light-text);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.franja-contacte a:hover {
+  opacity: 0.8;
+}
