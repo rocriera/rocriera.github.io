@@ -14,7 +14,7 @@
   --carousel-spacing: 0px;
 
   --header-height: 65px;
-  --price-list-bottom-dist: 330px;
+  --price-list-bottom-dist: 380px;
   --price-list-min-height: 220px;
 }
 
@@ -129,7 +129,7 @@ body {
   font-size: 60px;
   font-weight: 900;
   color: var(--color-brand-accent);
-  margin-top: 230px;
+  margin-top: 180px;
   margin-bottom: 1px;
   line-height: 1;
   text-shadow: var(--shadow-strong);
