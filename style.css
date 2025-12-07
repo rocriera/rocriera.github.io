@@ -14,7 +14,7 @@
   --carousel-spacing: 0px;
 
   --header-height: 65px;
-  --price-list-bottom-dist: 280px;
+  --price-list-bottom-dist: 330px;
   --price-list-min-height: 220px;
 }
 
@@ -126,9 +126,10 @@ body {
 }
 
 .price {
-  font-size: clamp(75px, 15vh, 125px);
+  font-size: 60px;
   font-weight: 900;
   color: var(--color-brand-accent);
+  margin-top: 230px;
   margin-bottom: 1px;
   line-height: 1;
   text-shadow: var(--shadow-strong);
@@ -265,10 +266,25 @@ body {
   background-size: cover;
   color: var(--color-light-text); /* text color */
   text-align: center;
-  padding: 60px;
+  padding: 30px;
+  height: 200px;
   width: 100vw;
   font-size: 1rem;
   overflow: hidden; /* needed for overlay */
+
+  /* FLEXBOX TO CENTER CONTENT VERTICALLY AND HORIZONTALLY */
+  display: flex;
+  flex-direction: column; /* stack arrow above text */
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+}
+
+.franja-winter p:first-child {
+  margin: 0;       /* remove default margin */
+}
+
+.franja-winter p:last-child {
+  margin: 0;       /* remove default margin */
 }
 
 /* Dark overlay to make image darker */
