@@ -257,3 +257,43 @@ body {
 .franja-contacte a:hover {
   opacity: 0.8;
 }
+
+/* ========= FRANJA DE CONTACTE - WINTER ========= */
+.franja-winter {
+  position: relative;
+  background: url('resources/snow.jpg') no-repeat center center;
+  background-size: cover;
+  color: var(--color-light-text); /* text color */
+  text-align: center;
+  padding: 60px;
+  width: 100vw;
+  font-size: 1rem;
+  overflow: hidden; /* needed for overlay */
+}
+
+/* Dark overlay to make image darker */
+.franja-winter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65); /* adjust 0.5 for darkness */
+  pointer-events: none; /* keeps text clickable */
+  z-index: 1;
+}
+
+/* Make text appear above overlay */
+.franja-winter p,
+.franja-winter a {
+  position: relative;
+  z-index: 2;
+}
+
+.franja-winter a {
+  color: #ffffff; /* link color */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.franja-winter a:hover {
+  opacity: 0.8;
+}

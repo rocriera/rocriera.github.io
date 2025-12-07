@@ -25,8 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Your image pool
     const imagePool = [
         "images/1.jpeg",
-        "images/2.jpg",
-        "images/3.jpg"
+        "images/2.jpeg",
+        "images/3.jpeg",
+        "images/4.jpeg",
+        "images/5.jpeg",
+        "images/6.jpeg",
+        "images/7.jpeg",
     ];
     
     let currentImageIndex = 0;
