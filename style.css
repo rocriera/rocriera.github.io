@@ -6,7 +6,7 @@
   --color-border: #DDDDDD;
   --color-brand-accent: #3FA9F5;
 
-  --color-dark-overlay: rgba(0, 0, 0, 0.25);
+  --color-dark-overlay: rgba(0, 0, 0, 0.15);
   --color-light-text: #ffffff;
   
   --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.6);
@@ -14,8 +14,7 @@
   --carousel-spacing: 0px;
 
   --header-height: 65px;
-  --price-list-bottom-dist: 380px;
-  --price-list-min-height: 220px;
+  --price-list-height: 260px;
 }
 
 /* ========= GLOBAL RESET ========= */
@@ -110,8 +109,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  height: calc(100vh - var(--header-height) - var(--price-list-bottom-dist));
-  min-height: var(--price-list-min-height);
+  height: var(--price-list-height);
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -126,10 +124,10 @@ body {
 }
 
 .price {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 900;
   color: var(--color-brand-accent);
-  margin-top: 180px;
+  margin-top: 170px;
   margin-bottom: 1px;
   line-height: 1;
   text-shadow: var(--shadow-strong);
