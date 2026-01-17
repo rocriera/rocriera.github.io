@@ -258,35 +258,41 @@ body {
 }
 
 /* ========= FRANJA DE CONTACTE - WINTER ========= */
-.franja-winter {
+.franja-vacances {
+  /* We hide it by default so it doesn't "flicker" on load */
+  display: none; 
+  
+  /* Centering logic (only works when JS turns on 'flex') */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   position: relative;
-  background: url('resources/snow.jpg') no-repeat center center;
-  background-size: cover;
-  color: var(--color-light-text); /* text color */
+  color: var(--color-light-text);
   text-align: center;
   padding: 30px;
   height: 200px;
   width: 100vw;
-  font-size: 1rem;
-  overflow: hidden; /* needed for overlay */
-
-  /* FLEXBOX TO CENTER CONTENT VERTICALLY AND HORIZONTALLY */
-  display: flex;
-  flex-direction: column; /* stack arrow above text */
-  justify-content: center; /* vertical centering */
-  align-items: center;     /* horizontal centering */
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
-.franja-winter p:first-child {
+/* Helper class to show the banner */
+.franja-vacances.is-visible {
+  display: flex;
+}
+
+.franja-vacances p:first-child {
   margin: 0;       /* remove default margin */
 }
 
-.franja-winter p:last-child {
+.franja-vacances p:last-child {
   margin: 0;       /* remove default margin */
 }
 
 /* Dark overlay to make image darker */
-.franja-winter::before {
+.franja-vacances::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -296,18 +302,18 @@ body {
 }
 
 /* Make text appear above overlay */
-.franja-winter p,
-.franja-winter a {
+.franja-vacances p,
+.franja-vacances a {
   position: relative;
   z-index: 2;
 }
 
-.franja-winter a {
+.franja-vacances a {
   color: #ffffff; /* link color */
   font-weight: bold;
   text-decoration: underline;
 }
 
-.franja-winter a:hover {
+.franja-vacances a:hover {
   opacity: 0.8;
 }

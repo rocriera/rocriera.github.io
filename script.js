@@ -1,4 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // --- CONFIGURATION FOR THE BANNER ---
+  const bannerSettings = {
+    isVisible: false, // Change to false to make the whole section disappear
+    message: 'Per reservar durant vacances de <strong>Nadal</strong> escriu per <strong>whats</strong>',
+    imagePath: 'resources/snow.jpg'
+  };
+
+  const banner = document.querySelector('.franja-vacances');
+  const bannerText = banner.querySelector('p:last-child');
+
+  if (bannerSettings.isVisible) {
+    // 1. Activate the banner (this triggers your CSS flex logic)
+    banner.style.display = 'flex'; 
+    
+    // 2. Inject the custom content
+    banner.style.backgroundImage = `url('${bannerSettings.imagePath}')`;
+    bannerText.innerHTML = bannerSettings.message;
+  } else {
+    // 3. Ensure it is completely gone from the layout
+    banner.style.display = 'none';
+  }
+
   // Funció per actualitzar l'any al peu de pàgina
   const yearSpan = document.getElementById('year');
   if (yearSpan) {
