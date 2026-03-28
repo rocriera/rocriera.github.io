@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- CONFIGURATION FOR THE BANNER ---
   const bannerSettings = {
-    isVisible: false, // Change to false to make the whole section disappear
-    message: 'Per reservar durant vacances de <strong>Nadal</strong> escriu per <strong>whats</strong>',
-    imagePath: 'resources/snow.jpg'
+    isVisible: true, // Change to false to make the whole section disappear
+    message: 'Per reservar durant <strong>Setmana Santa</strong> escriu per <strong>whats</strong>',
+    imagePath: 'resources/setmanasanta3.jpeg'
   };
 
   const banner = document.querySelector('.franja-vacances');

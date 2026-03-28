@@ -238,7 +238,7 @@ body {
   background: var(--color-background);
 }
 /* ========= FRANJA DE CONTACTE ========= */
-.franja-contacte {
+.franja-info {
   background-color: var(--color-brand-accent); /* blau */
   color: var(--color-light-text); /* text negre */
   text-align: center;
@@ -247,13 +247,13 @@ body {
   font-size: 1rem;
 }
 
-.franja-contacte a {
+.franja-info a {
   color: var(--color-light-text);
   font-weight: bold;
   text-decoration: underline;
 }
 
-.franja-contacte a:hover {
+.franja-info a:hover {
   opacity: 0.8;
 }
 
