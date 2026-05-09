@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- CONFIGURATION FOR THE BANNER ---
   const bannerSettings = {
-    isVisible: true, // Change to false to make the whole section disappear
+    isVisible: false, // Change to false to make the whole section disappear
     message: 'Per reservar durant <strong>Setmana Santa</strong> escriu per <strong>whats</strong>',
     imagePath: 'resources/setmanasanta3.jpeg'
   };
@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/5.jpeg",
         "images/6.jpeg",
         "images/7.jpeg",
+        "images/8.jpeg",
     ];
     
     let currentImageIndex = 0;
