@@ -242,7 +242,10 @@ body {
   background-color: var(--color-brand-accent); /* blau */
   color: var(--color-light-text); /* text negre */
   text-align: center;
-  padding: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
   width: 100vw;
   font-size: 1rem;
 }
