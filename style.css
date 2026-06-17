@@ -61,7 +61,7 @@ body {
   position: relative;
   overflow: hidden;
   color: var(--color-light-text);
-  min-height: 450px;       /* Alçada ideal per lluir el carrusel */
+  min-height: 350px;       /* Alçada ideal per lluir el carrusel */
   display: flex;
   align-items: center;     /* Centra verticalment els preus dins el carrusel */
   justify-content: center; /* Centra horitzontalment */
