@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- CONFIGURATION FOR THE BANNER ---
   const bannerSettings = {
-    isVisible: false, // Change to false to make the whole section disappear
-    message: 'Per reservar durant <strong>Setmana Santa</strong> escriu per <strong>whats</strong>',
-    imagePath: 'resources/setmanasanta3.jpeg'
+    isVisible: true, // Change to false to make the whole section disappear
+    message: 'Del <strong class="text-blue"> divendres 12 de Juliol</strong> fins al <strong class="text-blue"> final de l&#39estiu</strong>, web tancada. Escriu per <strong class="text-blue">whats</strong> per reservar.',
+    imagePath: 'resources/estiu2.jpg'
   };
 
   const banner = document.querySelector('.franja-vacances');
