@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- CONFIGURATION FOR THE BANNER ---
   const bannerSettings = {
-    isVisible: true, // Change to false to make the whole section disappear
+    isVisible: false, // Change to false to make the whole section disappear
     message: 'Del <strong class="text-blue"> divendres 12 de Juliol</strong> fins al <strong class="text-blue"> final de l&#39estiu</strong>, web tancada. Escriu per <strong class="text-blue">whats</strong> per reservar.',
     imagePath: 'resources/estiu2.jpg'
   };
@@ -54,6 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/6.jpeg",
         "images/7.jpeg",
         "images/8.jpeg",
+        "images/9.jpeg",
+        "images/10.jpeg",
+        "images/11.jpeg",
     ];
     
     let currentImageIndex = 0;
