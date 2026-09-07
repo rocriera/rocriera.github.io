@@ -10,14 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const bannerText = banner.querySelector('p:last-child');
 
   if (bannerSettings.isVisible) {
-    // 1. Activate the banner (this triggers your CSS flex logic)
     banner.style.display = 'flex'; 
-    
-    // 2. Inject the custom content
     banner.style.backgroundImage = `url('${bannerSettings.imagePath}')`;
     bannerText.innerHTML = bannerSettings.message;
   } else {
-    // 3. Ensure it is completely gone from the layout
     banner.style.display = 'none';
   }
 
@@ -54,9 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/6.jpeg",
         "images/7.jpeg",
         "images/8.jpeg",
-        "images/9.jpeg",
-        "images/10.jpeg",
-        "images/11.jpeg",
     ];
     
     let currentImageIndex = 0;
@@ -120,44 +113,54 @@ document.addEventListener("DOMContentLoaded", () => {
         /* Add 1 more for mobile devices bug */
         const newImage2 = createImage(imagePool[(leftIndex % imagePool.length + imagePool.length) % imagePool.length]);
         track.prepend(newImage2);
-
     }
     
     function centerTrack() {
         const containerWidth = container.offsetWidth;
         const activeImage = track.querySelector('.active-carousel-image');
         if (!activeImage) return;
-        let prevWidth = 0;
-        let foundActive = false;
-        for (const img of track.children) {
-            if (img.classList.contains('active-carousel-image')) {
-                foundActive = true;
-            } else if (!foundActive) {
-                prevWidth += img.offsetWidth;
-            }
-        }
-        const activeImageWidth = activeImage.offsetWidth;
-        const centerOffset = (containerWidth / 2) - (activeImageWidth / 2) - prevWidth;
+
+        // Calculem el centre exacte de la imatge activa respecte la pista
+        const activeCenter = activeImage.offsetLeft + (activeImage.offsetWidth / 2);
+        const centerOffset = (containerWidth / 2) - activeCenter;
+
         track.style.transition = 'none';
         track.style.transform = `translateX(${centerOffset}px)`;
-        void track.offsetWidth;
+        void track.offsetWidth; // Força el reflow per a la propera animació
         track.style.transition = 'transform 1.2s ease-in-out';
     }
     
     function nextImage() {
         if (isAnimating) return;
         isAnimating = true;
-        const firstImageWidth = track.firstElementChild.offsetWidth;
+
+        const activeImage = track.querySelector('.active-carousel-image');
+        if (!activeImage || !activeImage.nextElementSibling) {
+            isAnimating = false;
+            return;
+        }
+
+        // Calculem la distància de centre a centre entre la imatge actual i la següent
+        const nextImg = activeImage.nextElementSibling;
+        const activeCenter = activeImage.offsetLeft + (activeImage.offsetWidth / 2);
+        const nextCenter = nextImg.offsetLeft + (nextImg.offsetWidth / 2);
+        const shiftDistance = nextCenter - activeCenter;
+
         const currentTransform = new WebKitCSSMatrix(window.getComputedStyle(track).transform).e;
-        const newTransform = currentTransform - firstImageWidth;
+        const newTransform = currentTransform - shiftDistance;
+
+        track.style.transition = 'transform 1.2s ease-in-out';
         track.style.transform = `translateX(${newTransform}px)`;
-        track.addEventListener('transitionend', function handler() {
-            currentImageIndex++;
+
+        function handler() {
+            track.removeEventListener('transitionend', handler);
+            currentImageIndex = (currentImageIndex + 1) % imagePool.length;
             fillTrack();
             centerTrack();
             isAnimating = false;
-            track.removeEventListener('transitionend', handler);
-        });
+        }
+
+        track.addEventListener('transitionend', handler);
     }
 
     function startCarousel() {
@@ -180,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Main execution flow
     preloadAllImages().then(() => {
-        // Once all images are loaded, start the carousel
         startCarousel();
         window.addEventListener('resize', handleResize);
     }).catch(error => {
