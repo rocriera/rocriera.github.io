@@ -1,23 +1,20 @@
-/* ========= COLOR VARIABLES ========= */
+/* ========= VARIABLES ========= */
 :root {
-  --color-background: #F7F7F7;       /* Gris molt clar per al fons general */
-  --color-text: #111111;             /* Gris molt fosc / quasi negre per al text */
-  --color-muted-text: #666666;       /* Gris secundari */
-  --color-border: #E0E0E0;           /* Gris clar per a línies i separadors */
-  --color-brand-accent: #111111;     /* Accent fosquet / estil monocromàtic */
+  --color-background: #F7F7F7;
+  --color-text: #111111;
+  --color-muted-text: #666666;
+  --color-border: #E0E0E0;
+  --color-light-text: #ffffff;
+  --color-dark-overlay: rgba(0, 0, 0, 0.35); /* keeps text readable over photos */
 
-  --color-dark-overlay: rgba(0, 0, 0, 0.35); /* Capa fosca per garantir llegibilitat */
-  --color-light-text: #ffffff;       /* Blanc pur */
-  
   --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.5);
   --shadow-strong: 0 4px 16px rgba(0, 0, 0, 0.7);
-  --carousel-spacing: 0px;
 
+  --carousel-spacing: 0px;
   --header-height: 65px;
-  --price-list-height: 260px;
 }
 
-/* ========= GLOBAL RESET ========= */
+/* ========= GLOBAL ========= */
 * {
   box-sizing: border-box;
 }
@@ -30,7 +27,7 @@ body {
 }
 
 .container {
-  width: 100vw;
+  width: 100%;
   margin-inline: auto;
 }
 
@@ -38,54 +35,111 @@ body {
 .stack { display: flex; flex-direction: column; }
 .gap-l { gap: 1.5rem; }
 .gap-m { gap: 1rem; }
-.gap-s { gap: .5rem; }
+
+.text-white {
+  color: var(--color-light-text);
+  font-weight: 600;
+  text-shadow: var(--shadow-soft);
+}
+
+/* White, bold, underlined emphasis (prices section and vacation banner) */
+.highlight {
+  color: var(--color-light-text);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-shadow: var(--shadow-soft);
+}
 
 /* ========= HEADER ========= */
 .site-header {
-  border-bottom: 1px solid var(--color-border);
-  background: #FFFFFF;
-  height: var(--header-height);
   display: flex;
   justify-content: center;
   align-items: center;
+  height: var(--header-height);
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .site-header h1 {
+  margin: 0;
+  padding: 0;
   font-size: 28px;
   letter-spacing: 0.12em;
   color: var(--color-text);
+}
+
+/* ========= VACATION BANNER (shown via config.js) ========= */
+.franja-vacances {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  padding: 30px;
+  overflow: hidden;
+  color: var(--color-light-text);
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.franja-vacances.is-visible {
+  display: flex;
+}
+
+/* Dark layer over the background photo */
+.franja-vacances::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+}
+
+.franja-vacances p,
+.franja-vacances a {
+  position: relative;
+  z-index: 2;
+}
+
+.franja-vacances p {
   margin: 0;
-  padding: 0;
+}
+
+.franja-vacances a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.franja-vacances a:hover {
+  opacity: 0.8;
 }
 
 /* ========= PRICES SECTION ========= */
 #prices {
   position: relative;
-  overflow: hidden;
-  color: var(--color-light-text);
-  min-height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.carousel-overlay {
-  position: absolute;
-  inset: 0;
-  background: var(--color-dark-overlay);
-  z-index: 1;
-  pointer-events: none;
+  min-height: 350px;
+  overflow: hidden;
+  color: var(--color-light-text);
 }
 
 #prices .container.price-section-content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  padding-block: 40px;
   width: 100%;
+  padding-block: 40px;
+  text-align: center;
 }
 
-/* Background carrusel */
+/* Background carousel */
 .carousel-bg {
   position: absolute;
   inset: 0;
@@ -101,21 +155,29 @@ body {
 }
 
 .carousel-track img {
+  flex-shrink: 0;
   height: 100%;
   width: auto;
   object-fit: cover;
-  flex-shrink: 0;
   margin: 0 var(--carousel-spacing);
-  filter: brightness(0.7); /* Imatges en color real, lleugerament enfosquides per llegibilitat */
+  filter: brightness(0.7); /* slightly darkened for readability */
 }
 
-/* ========= PRICES CONTENT ========= */
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--color-dark-overlay);
+  pointer-events: none;
+}
+
+/* Prices */
 .price-list {
   display: flex;
   justify-content: center;
-  align-items: flex-start; 
+  align-items: flex-start;
+  flex-wrap: wrap;
   gap: 3.5rem;
-  flex-wrap: wrap;         
   margin-bottom: 30px;
 }
 
@@ -123,19 +185,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   width: 100%;
-  margin-left: 20px;
-  margin-right: 20px;
-  max-width: 140px;        
+  max-width: 140px;
+  margin-inline: 20px;
+  text-align: center;
 }
 
 .price {
-  font-size: 52px;         /* Mida un xic més petita i organitzada */
+  margin: 0 0 5px 0;
+  font-size: 52px;
   font-weight: 800;
-  color: var(--color-light-text);
-  margin: 0 0 5px 0;      
   line-height: 1;
+  color: var(--color-light-text);
   text-shadow: var(--shadow-strong);
 }
 
@@ -147,112 +208,30 @@ body {
   line-height: 1.2;
 }
 
-.text-white {
-  color: var(--color-light-text);
-  font-weight: 600;
-  text-shadow: var(--shadow-soft);
-}
-
-.text-blue {
-  color: var(--color-light-text);
-  font-weight: 800;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-shadow: var(--shadow-soft);
-}
-
-/* Animated arrow */
+/* Bouncing "reserves més avall" arrow */
 .arrow-label {
   margin-top: 15px;
   font-size: 1rem;
-  color: var(--color-light-text);
   text-align: center;
-  animation: bounce 1.2s infinite;
+  color: var(--color-light-text);
   text-shadow: var(--shadow-soft);
+  animation: bounce 1.2s infinite;
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { 
-    transform: translateY(0); 
-  }
-  40% { 
-    transform: translateY(-8px); 
-  }
-  60% { 
-    transform: translateY(-4px); 
-  }
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
 }
 
-/* ========= BOOKING ========= */
-#booking {
-  padding: 0;
-  margin-top: 1rem;
-  width: 100vw;
-  min-height: 900px;
-}
-
-.calendar-card {
-  padding: 0;
-  margin-top: 1rem;
-  width: 100vw;
-  min-height: 900px;
-}
-
-.calendar-card iframe {
-  min-height: 900px;
-}
-
-/* ========= ALTERNATIVE LINKS ========= */
-.alt-link {
-  color: var(--color-muted-text);
-  font-size: .95rem;
-  text-align: center;
-  display: block;
-  margin-top: 1rem;
-}
-
-.alt-link a {
-  color: var(--color-text);
-  font-weight: bold;
-}
-
-/* ========= CONTACT ========= */
-.phone.center {
-  text-align: center;
-  font-size: 1.1rem;
-  margin-top: 20px;
-}
-
-.phone a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 2px solid var(--color-text);
-  padding-bottom: 2px;
-}
-
-.phone a:hover { opacity: .85; }
-
-/* ========= FOOTER ========= */
-.site-footer {
-  text-align: center;
-  border-top: 1px solid var(--color-border);
-  padding: 16px 0;
-  color: var(--color-muted-text);
-  margin-top: 40px;
-  background: #FFFFFF;
-}
-
-/* ========= FRANJA DE CONTACTE ========= */
+/* ========= CONTACT STRIP ========= */
 .franja-info {
+  width: 100%;
+  padding: 12px 20px;
   background-color: #111111;
   color: var(--color-light-text);
-  text-align: center;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 100vw;
   font-size: 1rem;
+  text-align: center;
 }
 
 .franja-info a {
@@ -265,56 +244,25 @@ body {
   opacity: 0.8;
 }
 
-/* ========= FRANJA DE CONTACTE - WINTER ========= */
-.franja-vacances {
-  display: none; 
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  color: var(--color-light-text);
+/* ========= BOOKING (Calendly) ========= */
+#booking,
+.calendar-card {
+  width: 100%;
+  min-height: 900px;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.calendar-card iframe {
+  min-height: 900px;
+}
+
+/* ========= FOOTER ========= */
+.site-footer {
+  margin-top: 40px;
+  padding: 16px 0;
+  background: #FFFFFF;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted-text);
   text-align: center;
-  padding: 30px;
-  height: 200px;
-  width: 100vw;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-
-.franja-vacances.is-visible {
-  display: flex;
-}
-
-.franja-vacances p:first-child {
-  margin: 0;
-}
-
-.franja-vacances p:last-child {
-  margin: 0;
-}
-
-.franja-vacances::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.franja-vacances p,
-.franja-vacances a {
-  position: relative;
-  z-index: 2;
-}
-
-.franja-vacances a {
-  color: #ffffff;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.franja-vacances a:hover {
-  opacity: 0.8;
 }
