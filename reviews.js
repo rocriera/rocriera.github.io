@@ -11,7 +11,7 @@ const firebaseConfig = {
 };
 
 const MAX_NAME_LENGTH = 40;
-const MAX_REVIEWS = 100;
+const MAX_REVIEWS = 3;
 const COOLDOWN_MS = 168 * 60 * 60 * 1000; // 1 ressenya per dispositiu cada 168 h
 const STORAGE_KEY = "lastReviewAt";
 
