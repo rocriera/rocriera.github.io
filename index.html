@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ROC RIERA</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reviews.css">
 </head>
 <body>
   <header class="site-header">
@@ -58,6 +59,34 @@
         <div class="calendly-inline-widget" data-url="https://calendly.com/rocrieramalgosa/tall"></div>
       </div>
     </section>
+
+    <!-- Ressenyes (Firebase): lògica a reviews.js -->
+    <section id="reviews">
+      <h2>Ressenyes</h2>
+      <div class="review-summary" id="reviewSummary"></div>
+
+      <form class="review-form" id="reviewForm" novalidate>
+        <label for="reviewName">
+          El teu nom
+          <input type="text" id="reviewName" name="name" autocomplete="given-name" placeholder="Nom" required>
+        </label>
+
+        <!-- Camp trampa per bots: no omplir -->
+        <div class="hp-field" aria-hidden="true">
+          <label>Web <input type="text" id="reviewWeb" name="web" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div>
+          <label id="starLabel">Puntuació</label>
+          <div class="star-input" id="starInput" role="radiogroup" aria-labelledby="starLabel"></div>
+        </div>
+
+        <button type="submit" class="review-submit" id="reviewSubmit">Enviar ressenya</button>
+        <p class="review-status" id="reviewStatus" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="review-list" id="reviewList"></div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -69,5 +98,8 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script src="config.js"></script>
   <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="reviews.js"></script>
 </body>
 </html>
