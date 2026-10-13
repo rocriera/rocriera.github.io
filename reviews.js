@@ -187,11 +187,16 @@ form.addEventListener("submit", async (e) => {
   setStatus("Enviant…");
 
   try {
-    await fb.addDoc(reviewsCol, {
+    const reviewRef = await fb.addDoc(reviewsCol, {
       name,
       rating: selectedRating,
       createdAt: fb.serverTimestamp(),
     });
+
+    if (window.Loyalty && typeof window.Loyalty.awardReview === "function") {
+      window.Loyalty.awardReview(reviewRef.id);
+    }
+
     safeStorage("set", STORAGE_KEY, String(Date.now()));
     form.reset();
     selectRating(0);
