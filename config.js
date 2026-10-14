@@ -30,15 +30,4 @@ const SITE_CONFIG = {
     'images/12.jpeg',
     'images/13.jpeg',
   ],
-
-  // Loyalty points system: enables per-booking and per-review rewards.
-  loyalty: {
-    enabled: true,
-    pointsPerBooking: 10,
-    pointsPerReview: 2,
-    rewardThreshold: 100,
-    requireConfirmation: true,
-    visitCode: 'ROC',
-    rewardValidDays: 60,
-  },
 };
